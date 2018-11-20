@@ -1,0 +1,91 @@
+directory: /media/win/Music/Music/
+library: /media/win/Music/Music/.linux-library.blb
+threaded: yes
+
+import:
+    copy: no
+    move: yes
+    quiet_fallback: skip
+    log: beetlog.txt
+
+plugins: fetchart convert missing info duplicates scrub embedart fromfilename bpd
+embedart:
+    ifempty: yes
+    maxwidth: 1000
+    auto: yes
+    compare_threshold: 0
+    remove_art_file: no
+thumbnails:
+    auto: yes
+
+paths:
+    default: $format/$albumartist/$album/$track $title
+    singleton: $format/$albumartist/Other/$track $title
+    comp: $format/Compilations/$album/$track $title
+convert:
+    never_convert_lossy_files: yes
+    auto: no
+    embed: yes
+    copy_album_art: yes
+    dest: "/media/win/Music/Converted Music"
+    paths:
+        default: $albumartist/$album/$track $title
+        singleton: $albumartist/Other/$track $title
+        comp: Compilations/$album/$track $title
+    format: mp3
+    formats:
+        mp3: ffmpeg -i $source -y -vn -q:a 1 $dest
+        aac:
+            command: ffmpeg -i $source -y -vn -acodec libfaac -aq 100 $dest
+            extension: m4a
+        alac:
+            command: ffmpeg -i $source -y -vn -acodec alac $dest
+            extension: m4a
+        flac: ffmpeg -i $source -y -vn -acodec flac $dest
+        opus: ffmpeg -i $source -y -vn -acodec libopus -ab 96k $dest
+        ogg: ffmpeg -i $source -y -vn -acodec libvorbis -aq 3 $dest
+        wma: ffmpeg -i $source -y -vn -acodec wmav2 -vn $dest
+    pretend: no
+    # threads: 4 - default is to use all
+    max_bitrate: 500
+    tmpdir:
+    quiet: no
+    album_art_maxwidth: 1000
+scrub:
+    auto: yes
+duplicates:
+    album: no
+    checksum: ''
+    copy: ''
+    count: yes
+    delete: no
+    format: ''
+    full: no
+    keys: []
+    merge: no
+    move: ''
+    path: no
+    tiebreak: {}
+    strict: no
+    tag: ''
+missing:
+    count: no
+    total: no
+fetchart:
+    auto: yes
+    minwidth: 200
+    # maxwidth: 2000
+    enforce_ratio: no
+    cautious: no
+    cover_names:
+    - cover
+    - front
+    - art
+    - album
+    - folder
+    sources:
+    - filesystem
+    - coverart
+    - itunes
+    - amazon
+    - albumart
