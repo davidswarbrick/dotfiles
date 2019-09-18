@@ -211,16 +211,16 @@ gaps bottom 24
 
 #smart_gaps on
 # VGA output setup
-exec --no-startup-id xrandr --output VGA1 --right-of LVDS1 --auto
+exec_always --no-startup-id xrandr --output VGA1 --right-of LVDS1 --auto
 workspace 1 output LVDS1
 workspace 2 output VGA1 LVDS1
 # Nice looking stuff
 exec compton
 # Background
-exec --no-startup-id feh --bg-scale /home/david/Pictures/Wallpapers/sail.jpg
+exec_always --no-startup-id feh --bg-scale /home/david/Pictures/Wallpapers/sail.jpg
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec mpd
+#exec mpd
 
 # Restore GNOME's settings
 #exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
