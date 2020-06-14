@@ -18,17 +18,19 @@ plugins: >-
   embedart
   fromfilename
   bpd
-  importadded
   lastgenre
   bucket
   discogs
   edit
   playlist
   smartplaylist
+  tweet
 embedart:
+    # was causing memory leaks/large growth and crashing pi
+    auto: no
+    #auto: yes
     ifempty: yes
     maxwidth: 1000
-    auto: yes
     compare_threshold: 0
     remove_art_file: no
 thumbnails:
@@ -107,10 +109,6 @@ fetchart:
     - itunes
     - amazon
     - albumart
-importadded:
-    # Useful when importing old library to preserve added times
-    # preserve_mtimes: yes
-    preserve_mtimes: no
 lastgenre:
     auto: yes
     count: 1
@@ -129,3 +127,8 @@ smartplaylist:
     playlists:
       - name: "Latest Additions.m3u"
         query: "added:-1w.."
+tweet:
+    api_key: "REDACTED"
+    api_secret_key: "REDACTED"
+    access_token: "REDACTED"
+    access_token_secret: "REDACTED"
