@@ -13,7 +13,7 @@ alias ls='ls --color=auto'
 alias put='rmapi put'
 alias n="ncmpcpp"
 alias cv="scp ~/Downloads/cover.jpg homepi:~/"
-alias cdm="cd ~/Documents/Cambridge/Master\'s\ Project/"
+alias s="~/swarbs_turntable/status-update.py"
 PROMPT="%F{yellow}%B%.%f%b "
 # Right prompt: git branch, unstaged changes:red staged:yellow none:green
 autoload -Uz vcs_info
