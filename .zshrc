@@ -25,3 +25,9 @@ zstyle ':vcs_info:git:*' formats '%F{green}%c%u(%b)'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' unstagedstr '%F{red}'
 zstyle ':vcs_info:git:*' stagedstr '%F{yellow}'
+# Searchable history
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
