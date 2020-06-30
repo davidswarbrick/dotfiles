@@ -11,10 +11,20 @@ compinit
 setopt COMPLETE_ALIASES
 alias ls='ls --color=auto'
 alias put='rmapi put'
-alias n="ncmpcpp"
-alias cv="scp ~/Downloads/cover.jpg homepi:~/"
-alias s="~/swarbs_turntable/status-update.py"
-PROMPT="%F{yellow}%B%.%f%b "
+alias n='ncmpcpp'
+alias cv='scp ~/Downloads/cover.jpg homepi:~/'
+alias s='~/swarbs_turntable/status-update.py'
+alias gs='git status'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gd='git diff'
+alias gco='git checkout'
+# Resize jpg to 5MB for Twitter upload
+function tw-jpg-conv(){
+  convert $1 -define jpeg:extent=5000kb $1
+}
+PROMPT='%F{yellow}%B%.%f%b '
 # Right prompt: git branch, unstaged changes:red staged:yellow none:green
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -29,5 +39,5 @@ zstyle ':vcs_info:git:*' stagedstr '%F{yellow}'
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward-end
-bindkey "^[[B" history-beginning-search-forward-end
+bindkey '^[[A' history-beginning-search-backward-end
+bindkey '^[[B' history-beginning-search-forward-end

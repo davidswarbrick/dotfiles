@@ -1,0 +1,19 @@
+[user]
+  email = david.swarbrick9@gmail.com
+  name = David Swarbrick
+  signingkey = B8070BF4FAA1803E
+[pull]
+  rebase = false
+[core]
+  editor = vim
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+[commit]
+  # As this config is for my personal (main) pc, force gpg signing with the above key.
+  gpgsign = true
