@@ -24,6 +24,10 @@ alias gco='git checkout'
 function tw-jpg-conv(){
   convert $1 -define jpeg:extent=5000kb $1
 }
+# Copy playlist to Walkman
+function walkman(){
+  awk '$0="Library/"$0' $1 > /run/media/david/SD_CARD/MUSIC/$1
+}
 PROMPT='%F{yellow}%B%.%f%b '
 # Right prompt: git branch, unstaged changes:red staged:yellow none:green
 autoload -Uz vcs_info
